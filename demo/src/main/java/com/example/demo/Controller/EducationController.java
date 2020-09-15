@@ -2,10 +2,8 @@ package com.example.demo.Controller;
 
 import com.example.demo.Dto.EducationInfo;
 import com.example.demo.Service.EducationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +16,15 @@ public class EducationController {
         this.educationService = educationService;
     }
 
-    @GetMapping("/education")
+    @GetMapping("/educations")
     List<EducationInfo> getEducationInfoById(@PathVariable Integer userId) {
         return this.educationService.getEducationInfoById(userId);
+    }
+
+    @PostMapping("/educations")
+    @ResponseStatus(HttpStatus.CREATED)
+    void addEducationInfo(@PathVariable Integer userId,
+                          @RequestBody EducationInfo educationInfo) {
+        this.educationService.addEducationInfo(userId, educationInfo);
     }
 }

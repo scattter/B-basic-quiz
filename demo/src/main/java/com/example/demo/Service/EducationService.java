@@ -17,4 +17,8 @@ public class EducationService {
     public List<EducationInfo> getEducationInfoById(Integer userId) {
         return this.educationRepository.getEducationInfoById(userId);
     }
+
+    public void addEducationInfo(Integer userId, EducationInfo educationInfo) {
+        this.educationRepository.save(userId, educationInfo);
+    }
 }

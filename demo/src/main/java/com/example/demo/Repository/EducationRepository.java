@@ -37,4 +37,12 @@ public class EducationRepository {
     public List<EducationInfo> getEducationInfoById(Integer userId) {
         return educationInfoList.get(userId);
     }
+
+    public void save(Integer userId,EducationInfo educationInfo) {
+        educationInfoList.forEach((id, lst) -> {
+            if (id==userId){
+                lst.add(educationInfo);
+            }
+        });
+    }
 }

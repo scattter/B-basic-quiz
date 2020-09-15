@@ -14,11 +14,11 @@ public class EducationService {
         this.educationRepository = educationRepository;
     }
 
-    public List<EducationInfo> getEducationInfoById(Integer userId) {
+    public List<EducationInfo> getEducationInfoById(Long userId) {
         return this.educationRepository.getEducationInfoById(userId);
     }
 
-    public void addEducationInfo(Integer userId, EducationInfo educationInfo) {
+    public void addEducationInfo(Long userId, EducationInfo educationInfo) {
         this.educationRepository.save(userId, educationInfo);
     }
 }

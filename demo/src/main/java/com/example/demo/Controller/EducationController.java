@@ -18,13 +18,13 @@ public class EducationController {
     }
 
     @GetMapping("/educations")
-    List<EducationInfo> getEducationInfoById(@PathVariable Integer userId) {
+    List<EducationInfo> getEducationInfoById(@PathVariable Long userId) {
         return this.educationService.getEducationInfoById(userId);
     }
 
     @PostMapping("/educations")
     @ResponseStatus(HttpStatus.CREATED)
-    void addEducationInfo(@PathVariable Integer userId,
+    void addEducationInfo(@PathVariable Long userId,
                           @RequestBody EducationInfo educationInfo) {
         this.educationService.addEducationInfo(userId, educationInfo);
     }

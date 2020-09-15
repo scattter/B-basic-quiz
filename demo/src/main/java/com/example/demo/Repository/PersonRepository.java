@@ -10,10 +10,10 @@ import java.util.concurrent.atomic.AtomicReference;
 @Repository
 public class PersonRepository {
 
-    private Map<Integer, PersonInfo> personInfoList = new HashMap<Integer, PersonInfo>();
+    private Map<Long, PersonInfo> personInfoList = new HashMap<Long, PersonInfo>();
 
     public PersonRepository() {
-        personInfoList.put(1, PersonInfo.builder()
+        personInfoList.put((long) 1, PersonInfo.builder()
                 .id((long) 1)
                 .name("KAMIL")
                 .age((long) 24)
@@ -23,11 +23,11 @@ public class PersonRepository {
         );
     }
 
-    public PersonInfo findById(Integer id) {
+    public PersonInfo findById(Long id) {
         return personInfoList.get(id);
     }
 
     public void save(PersonInfo personInfo) {
-        personInfoList.put(personInfoList.size() + 1, personInfo);
+        personInfoList.put(personInfo.getId(), personInfo);
     }
 }

@@ -17,7 +17,7 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    PersonInfo getPersonInfoById(@PathVariable Integer id) {
+    PersonInfo getPersonInfoById(@PathVariable Long id) {
         return this.personService.getPersonInfoById(id);
     }
 

@@ -13,7 +13,7 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public PersonInfo getPersonInfoById(Integer id) {
+    public PersonInfo getPersonInfoById(Long id) {
         return this.personRepository.findById(id);
     }
 

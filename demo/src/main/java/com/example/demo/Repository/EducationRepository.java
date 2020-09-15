@@ -12,7 +12,7 @@ import java.util.Map;
 @Repository
 public class EducationRepository {
 
-    private Map<Integer, List<EducationInfo>> educationInfoList = new HashMap<Integer, List<EducationInfo>>();
+    private Map<Long, List<EducationInfo>> educationInfoList = new HashMap<Long, List<EducationInfo>>();
 
     public EducationRepository() {
         EducationInfo info1 = EducationInfo.builder()
@@ -31,14 +31,14 @@ public class EducationRepository {
         lstEducationInfo.add(info1);
         lstEducationInfo.add(info2);
 
-        educationInfoList.put(1, lstEducationInfo);
+        educationInfoList.put(info1.getUserId(), lstEducationInfo);
     }
 
-    public List<EducationInfo> getEducationInfoById(Integer userId) {
+    public List<EducationInfo> getEducationInfoById(Long userId) {
         return educationInfoList.get(userId);
     }
 
-    public void save(Integer userId,EducationInfo educationInfo) {
+    public void save(Long userId,EducationInfo educationInfo) {
         educationInfoList.forEach((id, lst) -> {
             if (id==userId){
                 lst.add(educationInfo);

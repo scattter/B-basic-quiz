@@ -32,8 +32,8 @@ public class PersonRepository {
     }
 
     public void save(PersonInfo personInfo) {
-        if (!personInfoList.containsKey(personInfo.getId())) {
-            throw new UserIdNotExistException("userId not exist");
+        if (personInfoList.containsKey(personInfo.getId())) {
+            throw new UserIdNotExistException("userId has exist");
         }
         personInfoList.put(personInfo.getId(), personInfo);
     }

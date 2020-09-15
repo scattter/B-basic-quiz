@@ -5,6 +5,7 @@ import com.example.demo.Service.EducationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class EducationController {
     @PostMapping("/educations")
     @ResponseStatus(HttpStatus.CREATED)
     void addEducationInfo(@PathVariable Long userId,
-                          @RequestBody EducationInfo educationInfo) {
+                          @RequestBody @Valid EducationInfo educationInfo) {
         this.educationService.addEducationInfo(userId, educationInfo);
     }
 }

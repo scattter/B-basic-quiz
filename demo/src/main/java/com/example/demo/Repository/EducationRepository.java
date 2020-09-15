@@ -2,6 +2,7 @@ package com.example.demo.Repository;
 
 import com.example.demo.Dto.EducationInfo;
 import com.example.demo.Dto.PersonInfo;
+import com.example.demo.Exception.UserIdNotExistException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -35,12 +36,18 @@ public class EducationRepository {
     }
 
     public List<EducationInfo> getEducationInfoById(Long userId) {
+        if (!educationInfoList.containsKey(userId)) {
+            throw new UserIdNotExistException("userId not exist");
+        }
         return educationInfoList.get(userId);
     }
 
-    public void save(Long userId,EducationInfo educationInfo) {
+    public void save(Long userId, EducationInfo educationInfo) {
+        if (!educationInfoList.containsKey(userId)) {
+            throw new UserIdNotExistException("userId not exist");
+        }
         educationInfoList.forEach((id, lst) -> {
-            if (id==userId){
+            if (id == userId) {
                 lst.add(educationInfo);
             }
         });

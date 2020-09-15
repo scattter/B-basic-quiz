@@ -5,6 +5,8 @@ import com.example.demo.Service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @CrossOrigin
 @RequestMapping("users")
@@ -23,7 +25,7 @@ public class PersonController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    void addPerson(@RequestBody PersonInfo personInfo) {
+    void addPerson(@RequestBody @Valid PersonInfo personInfo) {
         this.personService.addPerson(personInfo);
     }
 }

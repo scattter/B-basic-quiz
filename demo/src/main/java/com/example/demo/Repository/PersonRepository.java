@@ -1,6 +1,7 @@
 package com.example.demo.Repository;
 
 import com.example.demo.Dto.PersonInfo;
+import com.example.demo.Exception.UserIdNotExistException;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -24,10 +25,16 @@ public class PersonRepository {
     }
 
     public PersonInfo findById(Long id) {
+        if (!personInfoList.containsKey(id)) {
+            throw new UserIdNotExistException("userId not exist");
+        }
         return personInfoList.get(id);
     }
 
     public void save(PersonInfo personInfo) {
+        if (!personInfoList.containsKey(personInfo.getId())) {
+            throw new UserIdNotExistException("userId not exist");
+        }
         personInfoList.put(personInfo.getId(), personInfo);
     }
 }

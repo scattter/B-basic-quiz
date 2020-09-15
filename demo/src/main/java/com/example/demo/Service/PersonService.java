@@ -16,4 +16,8 @@ public class PersonService {
     public PersonInfo getPersonInfoById(Integer id) {
         return this.personRepository.findById(id);
     }
+
+    public void addPerson(PersonInfo personInfo) {
+        this.personRepository.save(personInfo);
+    }
 }

@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class PersonInfo {
     private Long id;
     private String name;
+
     private Long age;
     private String avatar;
     private String description;

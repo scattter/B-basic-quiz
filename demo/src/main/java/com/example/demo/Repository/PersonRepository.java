@@ -26,4 +26,8 @@ public class PersonRepository {
     public PersonInfo findById(Integer id) {
         return personInfoList.get(id);
     }
+
+    public void save(PersonInfo personInfo) {
+        personInfoList.put(personInfoList.size() + 1, personInfo);
+    }
 }

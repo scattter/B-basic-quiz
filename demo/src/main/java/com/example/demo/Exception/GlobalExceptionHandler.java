@@ -21,6 +21,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
 
+    // GTB: - 返回 404 更正规
     @ExceptionHandler(UserIdNotExistException.class)
     public ResponseEntity<ErrorResult> handle(RuntimeException ex) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss z");

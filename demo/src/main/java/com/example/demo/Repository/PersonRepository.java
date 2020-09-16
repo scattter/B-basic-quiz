@@ -33,6 +33,7 @@ public class PersonRepository {
 
     public void save(PersonInfo personInfo) {
         if (personInfoList.containsKey(personInfo.getId())) {
+            // GTB: - 异常和 message 不匹配，如果要处理这种情况，就专门去处理，不要乱用异常
             throw new UserIdNotExistException("userId has exist");
         }
         personInfoList.put(personInfo.getId(), personInfo);

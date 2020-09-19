@@ -1,8 +1,7 @@
-package com.example.demo.Repository;
+package com.example.demo.repository;
 
-import com.example.demo.Dto.EducationInfo;
-import com.example.demo.Dto.PersonInfo;
-import com.example.demo.Exception.UserIdNotExistException;
+import com.example.demo.entity.EducationInfo;
+import com.example.demo.exception.UserIdNotExistException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class EducationRepository {
+public class EducationRepository{
 
     private Map<Long, List<EducationInfo>> educationInfoList = new HashMap<Long, List<EducationInfo>>();
 

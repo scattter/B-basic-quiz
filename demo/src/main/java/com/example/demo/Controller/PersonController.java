@@ -1,7 +1,7 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
-import com.example.demo.Dto.PersonInfo;
-import com.example.demo.Service.PersonService;
+import com.example.demo.entity.PersonInfo;
+import com.example.demo.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

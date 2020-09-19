@@ -1,7 +1,7 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
-import com.example.demo.Dto.EducationInfo;
-import com.example.demo.Service.EducationService;
+import com.example.demo.entity.EducationInfo;
+import com.example.demo.service.EducationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

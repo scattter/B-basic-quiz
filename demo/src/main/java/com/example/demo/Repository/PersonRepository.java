@@ -1,12 +1,11 @@
-package com.example.demo.Repository;
+package com.example.demo.repository;
 
-import com.example.demo.Dto.PersonInfo;
-import com.example.demo.Exception.UserIdNotExistException;
+import com.example.demo.entity.PersonInfo;
+import com.example.demo.exception.UserIdNotExistException;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Repository
 public class PersonRepository {

@@ -1,7 +1,7 @@
-package com.example.demo.Service;
+package com.example.demo.service;
 
-import com.example.demo.Dto.EducationInfo;
-import com.example.demo.Repository.EducationRepository;
+import com.example.demo.entity.EducationInfo;
+import com.example.demo.repository.EducationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

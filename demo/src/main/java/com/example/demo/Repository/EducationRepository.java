@@ -1,7 +1,8 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.EducationInfo;
-import com.example.demo.exception.UserIdNotExistException;
+import com.example.demo.entity.EducationEntity;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,45 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class EducationRepository{
+public interface EducationRepository extends CrudRepository<EducationEntity, Long> {
+    List<EducationEntity> findAll();
 
-    private Map<Long, List<EducationInfo>> educationInfoList = new HashMap<Long, List<EducationInfo>>();
-
-    public EducationRepository() {
-        EducationInfo info1 = EducationInfo.builder()
-                .userId((long) 1)
-                .title("Secondary school specializing in artistic")
-                .year((long) 2005)
-                .description("Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.")
-                .build();
-        EducationInfo info2 = EducationInfo.builder()
-                .userId((long) 1)
-                .title("First level graduation in Graphic Design")
-                .year((long) 2009)
-                .description("Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.")
-                .build();
-        List<EducationInfo> lstEducationInfo = new ArrayList<EducationInfo>();
-        lstEducationInfo.add(info1);
-        lstEducationInfo.add(info2);
-
-        educationInfoList.put(info1.getUserId(), lstEducationInfo);
-    }
-
-    public List<EducationInfo> getEducationInfoById(Long userId) {
-        if (!educationInfoList.containsKey(userId)) {
-            throw new UserIdNotExistException("userId not exist");
-        }
-        return educationInfoList.get(userId);
-    }
-
-    public void save(Long userId, EducationInfo educationInfo) {
-        if (!educationInfoList.containsKey(userId)) {
-            throw new UserIdNotExistException("userId not exist");
-        }
-        educationInfoList.forEach((id, lst) -> {
-            if (id == userId) {
-                lst.add(educationInfo);
-            }
-        });
-    }
+    @Query(value = "select * from education where education.user_id = ?1", nativeQuery = true)
+    List<EducationEntity> findAllByUserId(Long id);
 }

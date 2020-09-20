@@ -5,8 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
@@ -17,7 +16,9 @@ import javax.validation.constraints.Size;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonInfo {
+public class PersonEntity {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @Size(min = 1, max = 128, message = "name's size between 1~128")
     private String name;

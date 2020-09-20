@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 
 @Data
@@ -33,5 +34,7 @@ public class EducationEntity {
 
     @JsonSerialize(using = UserIdSerial.class)
     @JsonProperty(value = "userId")
-    @ManyToOne @JoinColumn(name = "user_id") private PersonEntity personEntity;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private PersonEntity personEntity;
 }

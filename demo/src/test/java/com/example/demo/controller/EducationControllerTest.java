@@ -74,7 +74,9 @@ class EducationControllerTest {
         String requestJson = objectMapper.writeValueAsString(info);
         System.out.println(requestJson);
 
-        mockMvc.perform(post("/users/3/educations").content(requestJson).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(post("/users/3/educations")
+                .content(requestJson)
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
 }

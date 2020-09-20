@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.exception.UserIdNotExistException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EducationService {
@@ -48,12 +49,12 @@ public class EducationService {
         return this.educationRepository.findAllByUserId(userId);
     }
 
-    public void addEducationInfo(Long userId, EducationEntity educationInfo) {
+    public void addEducationInfo(Long userId, EducationEntity educationEntity) {
         if (personRepository.findAllById(userId).size() == 0) {
             throw new UserIdNotExistException("this user isn't exist");
         } else {
-            educationInfo.setPersonEntity(personRepository.findAllById(userId).get(0));
+            educationEntity.setPersonEntity(personRepository.findAllById(userId).get(0));
         }
-        this.educationRepository.save(educationInfo);
+        this.educationRepository.save(educationEntity);
     }
 }

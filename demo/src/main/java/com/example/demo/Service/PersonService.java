@@ -14,9 +14,9 @@ public class PersonService {
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
         PersonEntity personEntity = PersonEntity.builder()
-                .id((long) 1)
+                .id(1)
                 .name("KAMIL")
-                .age((long) 24)
+                .age(24)
                 .avatar("https://inews.gtimg.com/newsapp_match/0/3581582328/0")
                 .description("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, non, dolorem, cumque distinctio magni quam expedita velit laborum sunt amet facere tempora ut fuga aliquam ad asperiores voluptatem dolorum! Quasi.")
                 .build();

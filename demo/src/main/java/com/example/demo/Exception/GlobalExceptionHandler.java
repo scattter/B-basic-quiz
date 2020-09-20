@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -17,15 +19,15 @@ public class GlobalExceptionHandler {
         String message = ex.getBindingResult().getFieldError().getDefaultMessage();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());
-        ErrorResult errorResult = new ErrorResult(formatter.format(date), HttpStatus.BAD_REQUEST.value(), "Bad Request", message);
+        ErrorResult errorResult = new ErrorResult(formatter.format(date), BAD_REQUEST.value(), "Bad Request", message);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
 
     @ExceptionHandler(UserIdNotExistException.class)
-    public ResponseEntity<ErrorResult> handle(RuntimeException ex) {
+    public ResponseEntity<ErrorResult> handle(UserIdNotExistException ex) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());
-        ErrorResult errorResult = new ErrorResult(formatter.format(date), HttpStatus.BAD_REQUEST.value(), "Not Found", ex.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
+        ErrorResult errorResult = new ErrorResult(formatter.format(date), BAD_REQUEST.value(), "Not Found", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResult);
     }
 }

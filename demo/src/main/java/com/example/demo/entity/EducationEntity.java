@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -22,10 +23,11 @@ public class EducationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Long userId;
-    private Long year;
+    private long year;
     @Size(min = 1, max = 256, message = "title's size between 1~256")
     private String title;
     @Size(min = 1, max = 4096, message = "description's size between 1~4096")
     private String description;
+
+    @ManyToOne @JoinColumn(name = "user_id") private PersonEntity personEntity;
 }

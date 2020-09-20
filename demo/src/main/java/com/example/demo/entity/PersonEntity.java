@@ -19,11 +19,11 @@ import javax.validation.constraints.Size;
 public class PersonEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     @Size(min = 1, max = 128, message = "name's size between 1~128")
     private String name;
     @Min(value = 17, message = "age must bigger than 16")
-    private Long age;
+    private long age;
     @Size(min = 8, max = 512, message = "avatar's size between 8~512")
     private String avatar;
     @Size(min = 0, max = 1024, message = "description's size between 0~1024")

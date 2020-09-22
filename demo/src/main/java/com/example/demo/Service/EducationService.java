@@ -48,7 +48,7 @@ public class EducationService {
     public List<EducationEntity> getEducationInfoById(Long userId) {
         return this.educationRepository.findAllByUserId(userId);
     }
-
+    
     public void addEducationInfo(Long userId, EducationEntity educationEntity) {
         if (personRepository.findAllById(userId).size() == 0) {
             throw new UserIdNotExistException("this user isn't exist");

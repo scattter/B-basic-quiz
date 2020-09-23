@@ -38,8 +38,8 @@ public class EducationService {
                 .year(2009)
                 .description("Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.")
                 .build();
-        info1.setPersonEntity(personRepository.findAllById((long) 1).get(0));
-        info2.setPersonEntity(personRepository.findAllById((long) 1).get(0));
+        info1.setPersonEntity(personEntity);
+        info2.setPersonEntity(personEntity);
         this.educationRepository.save(info1);
         this.educationRepository.save(info2);
     }
@@ -49,12 +49,13 @@ public class EducationService {
         return this.educationRepository.findAllByUserId(userId);
     }
     
-    public void addEducationInfo(Long userId, EducationEntity educationEntity) {
+    public EducationEntity addEducationInfo(Long userId, EducationEntity educationEntity) {
         if (personRepository.findAllById(userId).size() == 0) {
             throw new UserIdNotExistException("this user isn't exist");
         } else {
             educationEntity.setPersonEntity(personRepository.findAllById(userId).get(0));
         }
         this.educationRepository.save(educationEntity);
+        return educationEntity;
     }
 }
